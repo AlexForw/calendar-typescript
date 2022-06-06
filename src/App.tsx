@@ -1,7 +1,11 @@
+import './App.css'
+import BoardComponent from './components/BoardComponent';
+
+
 function App() {
   return (
-    <div className="App">
-      Hello
+    <div className="app">
+      <BoardComponent />
     </div>
   );
 }
