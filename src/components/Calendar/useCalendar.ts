@@ -25,7 +25,6 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
 
     const calendarDays = useMemo(() => {
         const monthDays = getMonthDays(selectedDate.monthIndex, selectedYear)
-        console.log('month', monthDays);
 
 
         const prevMonthDays = createMonth({
@@ -52,9 +51,27 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
             : 7 - lastDay.dayNumberInWeek + shiftIndex;
 
 
-        console.log('next', numberOfNextDays);
+        const totalCalendarDays = days.length + numberOfPrevDays + numberOfNextDays;
+
+        const result = [];
+
+        for (let i = 0; i < numberOfPrevDays; i += 1) {
+            const inverted = numberOfPrevDays - i;
+            result[i] = prevMonthDays[prevMonthDays.length - inverted];
+        }
+
+        for (let i = numberOfPrevDays; i < totalCalendarDays - numberOfNextDays; i += 1) {
+            result[i] = days[i - numberOfPrevDays];
+        }
+
+        for (let i = totalCalendarDays - numberOfNextDays; i < totalCalendarDays; i += 1) {
+            result[i] = nextMonthDays[i - totalCalendarDays + numberOfNextDays];
+        }
+
+        return result;
     }, [selectedMonth.monthIndex, selectedMonth.year, selectedYear])
 
+    console.log('calendarDays', calendarDays);
 
     return {}
 }
