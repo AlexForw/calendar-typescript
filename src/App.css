@@ -25,7 +25,7 @@
 
 .date__container {
     background-color: var(--background-color-calendar);
-    font-size: 15px;
+    font-size: 20px;
     color: var(--color-text);
     border-radius: 15px;
     padding: 5px 25px;
@@ -33,7 +33,7 @@
 }
 
 .calendar {
-    width: 200px;
+    width: 250px;
     border-radius: 5px;
     text-transform: capitalize;
     background-color: var(--background-color-calendar);
@@ -52,6 +52,7 @@
 }
 
 .calendar__header-clickable {
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -68,4 +69,95 @@
     cursor: pointer;
     background-image: var(--images-arrow);
     transform: rotate(-180deg);
+}
+
+
+.calendar__body {
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+}
+
+.calendar__week-names {
+    height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-additional);
+    text-align: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px 2px;
+}
+
+.calendar__days {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--color-text);
+    text-align: center;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2px 2px;
+}
+
+.calendar__day {
+    border-radius: 5px;
+    padding: 5.5px 0px;
+    cursor: pointer;
+}
+
+.calendar__day:hover {
+    background-color: var(--color-additional7);
+}
+
+.calendar__additional-day {
+    padding: 5.5px;
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--color-placeholder);
+}
+
+.calendar__pick-item {
+    padding: 9px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.calendar__pick-item:hover {
+    background-color: var(--color-additional7);
+}
+
+.calendar__today-item {
+    background-color: var(--background-color-calendar-header);
+}
+
+.calendar__selected-item {
+    color: var(--color-text);
+    background-color: var(--color-additional);
+}
+
+.calendar__selected-item:hover {
+    background-color: var(--color-additional);
+}
+
+.pick-items__container {
+    font-weight: 400;
+    color: var(--color-text);
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1px 1px;
+    font-size: 12px;
+}
+
+.calendar__unchoosable-year {
+    font-weight: 300;
+    padding: 9px 16px;
+    color: var(--color-placeholder);
 }

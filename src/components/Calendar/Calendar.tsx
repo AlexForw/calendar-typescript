@@ -13,7 +13,7 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
     return (
         <div className='calendar'>
             <div className='calendar__header'>
-                <div className='calendar__arrow-left'/>
+                <div className='calendar__arrow-left' />
                 {state.mode === 'days' && (
                     <div className="calendar__header-clickable" onClick={() => functions.setMode('monthes')}>
                         {state.monthNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
@@ -31,6 +31,32 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
                     </div>
                 )}
                 <div className='calendar__arrow-right' />
+            </div>
+
+            <div className='calendar__body'>
+                {state.mode === 'days' && (
+                    <>
+                        <div className='calendar__week-names'>
+                            {state.weekDaysNames.map((weekDaysName) => (
+                                <div key={weekDaysName.dayShort}>{weekDaysName.dayShort}</div>
+                            ))}
+                        </div>
+                        <div className='calendar__days'>
+                            {state.calendarDays.map((day) => {
+                                return (
+                                    <div key={`${day.dayNumber}-${day.monthIndex}`}
+                                        onClick={() => {
+                                            selectDate(day.date);
+                                        }}
+                                        className='calendar__day'
+                                    >
+                                        {day.dayNumber}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
