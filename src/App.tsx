@@ -1,4 +1,5 @@
 import './App.css'
+import Calendar from './components/Calendar/Calendar';
 import { createDate } from './date/createDate';
 import { createMonth } from './date/createMonth'
 import { createYear } from './date/createYear';
@@ -10,7 +11,7 @@ function App() {
   
   return (
     <div className="app">
-      calendar
+      <Calendar />
     </div>
   );
 }
