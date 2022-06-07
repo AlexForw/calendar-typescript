@@ -44,11 +44,17 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
 
         const shiftIndex = firstWeekDay - 1
         const numberOfPrevDays = firstDay.dayNumberInWeek - 1 - shiftIndex < 0
-                ? 7 - (firstWeekDay - firstDay.dayNumberInWeek)
-                : firstDay.dayNumberInWeek - 1 - shiftIndex;
-                console.log('prev', numberOfPrevDays);
+            ? 7 - (firstWeekDay - firstDay.dayNumberInWeek)
+            : firstDay.dayNumberInWeek - 1 - shiftIndex;
+
+        const numberOfNextDays = 7 - lastDay.dayNumberInWeek + shiftIndex > 6
+            ? 7 - lastDay.dayNumberInWeek - (7 - shiftIndex)
+            : 7 - lastDay.dayNumberInWeek + shiftIndex;
+
+
+        console.log('next', numberOfNextDays);
     }, [selectedMonth.monthIndex, selectedMonth.year, selectedYear])
 
-    
+
     return {}
 }
