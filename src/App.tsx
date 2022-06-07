@@ -1,10 +1,12 @@
 import './App.css'
 import { createDate } from './date/createDate';
 import { createMonth } from './date/createMonth'
+import { createYear } from './date/createYear';
 
 
 function App() {
-  console.log(createDate({locale:'en-US'}));
+  console.log('createYear',createYear().createYearMonthes());
+  
   
   return (
     <div className="app">
