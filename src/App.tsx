@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import './App.css'
 import Calendar from './components/Calendar/Calendar';
-import { createDate } from './date/createDate';
-import { createMonth } from './date/createMonth'
-import { createYear } from './date/createYear';
-import { getMonthNames } from './date/getMonthNames';
+import { formatDate } from './date/formatDate';
+
 
 
 function App() {
@@ -12,6 +10,7 @@ function App() {
 
   return (
     <div className="app">
+      <div className="date__container">{formatDate(selectedDate, 'DD MM YYYY')}</div>
       <Calendar selectDate={selectDate} selectedDate={selectedDate} />
     </div>
   );
