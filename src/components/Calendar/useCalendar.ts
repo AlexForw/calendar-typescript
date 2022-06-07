@@ -4,6 +4,7 @@ import { createMonth } from "../../date/createMonth";
 import { getMonthDays } from "../../date/getMonthDays";
 import { getMonthNames } from "../../date/getMonthNames";
 import { getWeekDaysNames } from "../../date/getWeekDaysNames";
+import { getYearsInterval } from "../../date/getYearsInterval";
 
 interface UseCalendarParams {
     locale?: string;
@@ -17,6 +18,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
     const [selectedDate, setSelectedDate] = useState(createDate({ date }))
     const [selectedMonth, setSelectedMonth] = useState(createMonth({ date: new Date(selectedDate.year, selectedDate.monthIndex), locale }))
     const [selectedYear, setSelectedYear] = useState(selectedDate.year)
+    const [selectedYearsInterval, setSelectedYearsInterval] = useState(getYearsInterval(selectedDate.year));
 
     const monthNames = useMemo(() => getMonthNames(locale), [])
     const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDay, locale), [])
@@ -36,7 +38,6 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
             date: new Date(selectedYear, selectedMonth.monthIndex + 1),
             locale
         }).createMonthDays();
-
 
         const firstDay = days[0]
         const lastDay = days[monthDays - 1]
@@ -71,7 +72,16 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
         return result;
     }, [selectedMonth.monthIndex, selectedMonth.year, selectedYear])
 
-    console.log('calendarDays', calendarDays);
-
-    return {}
+    return {
+        state: {
+            mode,
+            calendarDays,
+            weekDaysNames,
+            monthNames,
+            selectedDate,
+            selectedMonth,
+            selectedYear,
+            selectedYearsInterval,
+        },
+    }
 }
