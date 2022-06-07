@@ -1,3 +1,5 @@
+import { checkDateIsEqual } from "../../date/checkDateIsEqual";
+import { checkIsToday } from "../../date/checkIsToday";
 import { useCalendar } from "./useCalendar";
 
 interface CalendarProps {
@@ -43,13 +45,22 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
                         </div>
                         <div className='calendar__days'>
                             {state.calendarDays.map((day) => {
+                                const isToday = checkIsToday(day.date);
+                                const isSelectedDay = checkDateIsEqual(day.date, state.selectedDate.date);
+                                const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
+
                                 return (
                                     <div key={`${day.dayNumber}-${day.monthIndex}`}
                                         onClick={() => {
                                             selectDate(day.date);
+                                            functions.setSelectedDate(day)
                                         }}
-                                        className='calendar__day'
-                                    >
+                                        className={[
+                                            'calendar__day',
+                                            isToday ? 'calendar__today-item' : '',
+                                            isSelectedDay ? 'calendar__selected-item' : '',
+                                            isAdditionalDay ? 'calendar__additional-day' : ''
+                                        ].join(' ')}>
                                         {day.dayNumber}
                                     </div>
                                 );

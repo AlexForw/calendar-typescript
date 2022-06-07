@@ -85,6 +85,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
         },
         functions:{
             setMode,
+            setSelectedDate,
         }
     }
 }
