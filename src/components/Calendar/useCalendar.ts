@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { createDate } from "../../date/createDate";
 import { createMonth } from "../../date/createMonth";
 import { getMonthNames } from "../../date/getMonthNames";
+import { getWeekDaysNames } from "../../date/getWeekDaysNames";
 
 interface UseCalendarParams {
     locale?: string;
@@ -16,6 +17,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date }: UseCalen
     const [selectedYear, setSelectedYear] = useState(selectedDate.year)
 
     const monthNames = useMemo(() => getMonthNames(locale), [])
-    console.log('monthNames', monthNames);
+    const weekDaysNames = useMemo(()=> getWeekDaysNames(2, locale),[])
+    console.log('weekDaysNames', weekDaysNames);
     return {}
 }
