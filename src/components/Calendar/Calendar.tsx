@@ -15,7 +15,7 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
     return (
         <div className='calendar'>
             <div className='calendar__header'>
-                <div className='calendar__arrow-left' />
+                <div className='calendar__arrow-left' onClick={() => functions.onClickArrow('left')} />
                 {state.mode === 'days' && (
                     <div className="calendar__header-clickable" onClick={() => functions.setMode('monthes')}>
                         {state.monthNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
@@ -32,7 +32,7 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
                         {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
                     </div>
                 )}
-                <div className='calendar__arrow-right' />
+                <div className='calendar__arrow-right' onClick={() => functions.onClickArrow('right')} />
             </div>
 
             <div className='calendar__body'>
@@ -68,6 +68,36 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
                         </div>
                     </>
                 )}
+
+                {state.mode === 'monthes' && (
+                    <div className='pick-items__container'>
+                        {state.monthNames.map((monthName) => {
+                            const isCurrentMonth =
+                                new Date().getMonth() === monthName.monthIndex &&
+                                state.selectedYear === new Date().getFullYear();
+                            const isSelectedMonth = monthName.monthIndex === state.selectedMonth.monthIndex;
+
+                            return (
+                                <div
+                                    key={monthName.month}
+                                    aria-hidden
+                                    onClick={() => {
+                                        functions.setSelectedMonthByIndex(monthName.monthIndex);
+                                        functions.setMode('days');
+                                    }}
+                                    className={[
+                                        'calendar__pick-item',
+                                        isSelectedMonth ? 'calendar__selected-item' : '',
+                                        isCurrentMonth ? 'calendar__today-item' : ''
+                                    ].join(' ')}
+                                >
+                                    {monthName.monthShort}
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
             </div>
         </div>
     );
