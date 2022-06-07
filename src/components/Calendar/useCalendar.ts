@@ -136,6 +136,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
             setSelectedDate,
             onClickArrow,
             setSelectedMonthByIndex,
+            setSelectedYear,
         }
     }
 }

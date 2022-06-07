@@ -98,6 +98,37 @@ const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectDate, sel
                     </div>
                 )}
 
+
+                {state.mode === 'years' && (
+                    <div className='pick-items__container'>
+                        <div className='calendar__unchoosable-year'>{state.selectedYearsInterval[0] - 1}</div>
+                        {state.selectedYearsInterval.map((year) => {
+                            const isCurrentYear = new Date().getFullYear() === year;
+                            const isSelectedYear = year === state.selectedYear;
+
+                            return (
+                                <div
+                                    key={year}
+                                    aria-hidden
+                                    onClick={() => {
+                                        functions.setSelectedYear(year);
+                                        functions.setMode('monthes');
+                                    }}
+                                    className={[
+                                        'calendar__pick-item',
+                                        isCurrentYear ? 'calendar__today-item' : '',
+                                        isSelectedYear ? 'calendar__selected-item' : ''
+                                    ].join(' ')}
+                                >
+                                    {year}
+                                </div>
+                            );
+                        })}
+                        <div className='calendar__unchoosable-year'>
+                            {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
