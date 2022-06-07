@@ -1,4 +1,4 @@
-export const getMonthNumberOfDays = (
+export const getMonthDays = (
     monthIndex: number,
     yearNumber: number = new Date().getFullYear()
   ) => new Date(yearNumber, monthIndex + 1, 0).getDate();
