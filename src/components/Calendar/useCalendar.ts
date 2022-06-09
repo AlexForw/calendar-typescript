@@ -20,8 +20,8 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
     const [selectedYear, setSelectedYear] = useState(selectedDate.year)
     const [selectedYearsInterval, setSelectedYearsInterval] = useState(getYearsInterval(selectedDate.year));
 
-    const monthNames = useMemo(() => getMonthNames(locale), [])
-    const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDay, locale), [])
+    const monthNames = useMemo(() => getMonthNames(locale), [locale])
+    const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDay, locale), [locale])
 
     const days = useMemo(() => selectedMonth.createMonthDays(), [selectedMonth, selectedYear])
 

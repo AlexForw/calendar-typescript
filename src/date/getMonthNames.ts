@@ -1,6 +1,7 @@
 import { createDate } from './createDate';
 
-export const getMonthNames = (locale: string = 'defalut') => {
+export const getMonthNames = (locale: string = 'default') => {
+  
   const monthNames: {
     month: ReturnType<typeof createDate>['month'];
     monthShort: ReturnType<typeof createDate>['monthShort'];
