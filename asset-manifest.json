@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/calendar-typescript/static/css/main.c49ae6bc.css",
+    "main.js": "/calendar-typescript/static/js/main.21127876.js",
+    "index.html": "/calendar-typescript/index.html",
+    "static/media/arrow.svg": "/calendar-typescript/static/media/arrow.6201749a74705d2273d3.svg",
+    "main.c49ae6bc.css.map": "/calendar-typescript/static/css/main.c49ae6bc.css.map",
+    "main.21127876.js.map": "/calendar-typescript/static/js/main.21127876.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c49ae6bc.css",
+    "static/js/main.21127876.js"
+  ]
+}
